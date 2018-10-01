@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body
+        {
+            background-image:url("https://images.wallpaperscraft.com/image/color_surface_light_background_50561_1280x720.jpg");            
+            background-size:cover;
+        }
+        .hone11
+{
+    color:#a71428;
+    font-family: 'Lora', serif;
+    font-size:46px
+}
+        body {
+    font-family: Arial;
+    background-color: orange;
+}
+
+.navbar {
+     background-color: #1a2667;
+     overflow: hidden;
+     height: 63px;
+}
+
+.navbar a {
+     float: left;
+     display: block;
+     color: white;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+     font-size: 17px;
+}
+
+.navbar ul {
+    margin: 8px 0 0 0;
+    list-style: none;
+}
+
+.navbar a:hover {
+    background-color: #1a75ff;
+    color: #000;
+}
+
+.productTable {
+    padding-top:25px;
+    border-spacing: 0px;
+}
+
+.productTable thead tr th{
+    padding: 15px;
+    color: white;
+    background-color: #55b126;
+    font-size:15px;
+}
+
+.productTable tbody tr td {
+    padding: 13px;
+    font-size: 13px
+}
+
+.productTable tr:nth-child(even) {
+    background-color: #e4e4e4;
+}
+
+.productTable tr:nth-child(odd) {
+    background-color: white;
+}
+
+.actionBtn {
+    background-color: #1c54b5;
+    padding: 10px;
+    color: white;
+    border: none;
+    width: 75px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actionBtn:hover  {
+     background-color: #3d74d2;
+}
+
+.searchTextField {
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 5px
+}
+
+.productTextField {
+    height: 25px;
+    border-radius: 5px;
+    padding-left: 5px
+}
+
+.loginForm {
+    background-color: #d5dbe4;
+    border-spacing: 15px;
+    padding: 10px;
+    margin-top:100px;
+}
+
+
+
+
+  
+  .button {
+  min-width: 230;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: white; 
+    background-color: white;
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: #d2046c; 
+    color: white; 
+    border: 2px solid #white;
+    
+}
+
+.button1:hover {
+    background-color: #1a75ff;
+    color: white;
+}
+
+.button1 {border-radius: 12px;}
+
+.font1
+{
+    color:green;
+    font-family: 'Lora', serif;
+    font-size:52px
+}
+.hone
+{
+    color:#006bb3;
+    font-family: 'Lora', serif;
+    font-size:46px
+}
+.fontt
+{
+
+    font-family: 'Lora', serif;
+    font-size:25px
+}
+
+.fontmini
+{
+    color:blue;
+    font-family: 'Lora', serif;
+    font-size:40px
+}
+
+        .homeb
+        {
+         background-image:url("https://previews.123rf.com/images/garagestock/garagestock1701/garagestock170127096/69299569-quiz-concept-on-wooden-background.jpg");
+         background-size:cover;
+        }
+
+        .lang-icon{
+  position: absolute !important;
+  right: 0;
+  top: 0;
+}
+        </style>
+    	
+        <title>Result</title>
+ 		
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>      
+    </head>
+    <body>
+        <nav class="navbar">
+        <ul class="navbar-nav">
+                         <li><a href="{% url 'home' %}">Home</a></li>       
+                        <li><a href="/mini">My Result</a></li>  
+                        <li class="lang-icon" style="float:right;margin-right:25px"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+        <div align="center">
+          <h1 class ="hone11">Results !!!</h1>
+          <br></br>
+        </div>  
+    <table align="center" class="productTable">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>MARKS</th>
+                <th>SUBJECT</th>
+                <th>DATE</th>
+            </tr>  
+        </thead>
+        </tr> {% for item in contacts %} <tr> 
+                <td>{{ item.sid }}</td>
+                <td>{{ item.marks }}</td> 
+                <td>{{ item.subject }}</td> 
+                <td>{{ item.tdate }}</td> 
+            </tr> {% endfor %} 
+
+    </table>
+    <center>
+        <div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <b><a href="?page={{ contacts.previous_page_number }}">previous</a><b>
+        {% endif %}
+
+        <span class="current">
+           <b> Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.</b>
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+    </center>
+          
+    </body>
+    
+</html>
